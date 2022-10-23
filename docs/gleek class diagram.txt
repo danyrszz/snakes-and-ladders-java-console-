@@ -1,0 +1,43 @@
+Game
+	-turn : int
+	-board : Board
+	-gameOver : boolean
+	-player : Player[]
+	-winner : Player
+	-setWinner() void
+	-rollDice() int[]
+	-moveToBox(currentBox) void
+	//access board
+	+movePlayer(player) void
+Board
+	-snakes : Snakes
+	-ladders : Ladders
+	-board : Box[]
+	+Board()
+	+getBoxToJump() int
+Ladders
+	-ladders : hashMap
+	+getLadders() hashMap
+Snakes
+	-snakes : hashMap
+	+getSnakes() hashMap
+Box
+	-boxNumber : int
+	-jumpTo : int
+	-hasSnake : boolean
+	-hasLadder : boolean
+	+Box(int,int)
+	+getJumpTo() int
+	+getBoxNumber() int
+Player
+	-playerToken : int
+	-currentBox : int
+	+Player(int, 0)
+	+setCurrentBox(int) void
+	+getCurrentBox() int
+
+Game --> Board
+Board --> Box
+Game --> Player
+Board --> Ladders
+Board --> Snakes
