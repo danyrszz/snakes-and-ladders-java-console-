@@ -18,7 +18,6 @@ public class Player {
     this.name = name;
   }
 
-
   public void setCurrentBox(int number){
     this.currentBox = number;
   }

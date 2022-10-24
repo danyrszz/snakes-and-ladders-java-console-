@@ -1,7 +1,7 @@
 
 public class Board {
 
-  private static final int BOARD_LENGHT = 101;
+  private static final int BOARD_LENGHT = 120;
   private Snakes snakes = new Snakes ();
   private Ladders ladders = new Ladders ();
   private Box[] board ;
