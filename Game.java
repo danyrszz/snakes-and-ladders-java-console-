@@ -58,24 +58,22 @@ public class Game {
         "\n   "+dice1+"  /   "+dice2+
         "\n you move "+ (dice1+dice2) + " boxes."
       );
-      int boxToJump = game.board.getBoxToJump(targetBox);
 
+      //before moving check the final box to see if its the end of the game
+      if(targetBox == FINAL_BOX){
+        game.gameOver = true;
+        System.out.println("Congrats! "+playerName+ " you are the winner!");
+      }
+      else if(targetBox > FINAL_BOX){
+        int diceRest = (dice1+dice2) - (FINAL_BOX - currentBox);
+        targetBox = FINAL_BOX - diceRest;
+      }
+
+      int boxToJump = game.board.getBoxToJump(targetBox);
       if(game.board.hasSnake(targetBox)) System.out.println("Sorry, you've found a snake!");
       if(game.board.hasLadder(targetBox)) System.out.println("Lucky! a Ladder!");
-      
       currentPlayer.setCurrentBox(boxToJump);
       System.out.println(playerName+" has moved to box #" + currentPlayer.getCurrentBox());
-
-      // //before moving check the final box to see if its the end of the game
-      // if(boxToJump == FINAL_BOX){
-      //   game.gameOver = true;
-      //   System.out.println("Congrats! "+playerName+ " you are the winner!");
-      // }
-      // else if(boxToJump > FINAL_BOX){
-        
-      // }
-      // else{
-      // }
       
       //change to next player
       if(game.turn >= game.players.length-1){
@@ -85,7 +83,5 @@ public class Game {
       }
 
     } while(!game.gameOver);
-  
   }
-
 }
